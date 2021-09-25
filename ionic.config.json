@@ -1,0 +1,7 @@
+{
+  "name": "Fictional-Movie",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
