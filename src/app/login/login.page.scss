@@ -1,0 +1,11 @@
+.login {
+  &__forgot-password {
+    text-align: center;
+  }
+
+  &__has-text-danger {
+    margin: 0;
+    color: red;
+    font-size: 12px;
+  }
+ }
