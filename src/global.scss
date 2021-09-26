@@ -24,3 +24,17 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-input {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  min-height: 50px;
+}
+
+
+// Estilo para mensaje de error
+.has-text-danger {
+  margin: 0;
+  color: red;
+  font-size: 12px;
+}
