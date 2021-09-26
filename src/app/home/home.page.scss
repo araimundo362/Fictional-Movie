@@ -25,3 +25,9 @@
 #container a {
   text-decoration: none;
 }
+
+.home {
+  &__title {
+    text-align: center;
+  }
+}
