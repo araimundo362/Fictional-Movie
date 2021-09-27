@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h6>Complete los siguientes datos para registrarse</h6>
+  <form [formGroup]="registerForm">
+    <ion-row>
+      <ion-col offset="1" size="10">
+        <ion-item lines="none">
+          <ion-input color="primary" type="email" formControlName="email" required placeholder="Email"></ion-input>
+          <p *ngIf="email.invalid && email.touched" class="has-text-danger">Ingrese un email valido</p>
+          <p *ngIf="usernameTaken && email.touched">El usuario ingresado ya existe</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col offset="1" size="10">
+        <ion-item lines="none">
+          <ion-input color="primary" type="password" formControlName="password" required placeholder="Contraseña"></ion-input>
+          <p *ngIf="password.invalid && password.touched" class="has-text-danger">Ingrese un password valido</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col offset="1" size="10">
+        <ion-item lines="none">
+          <ion-input color="primary" type="password" formControlName="matchPassword" required placeholder="Repita la contraseña"></ion-input>
+          <p *ngIf="!matchPassword.hasError('mustMatch') && invalidForm && matchPassword.touched" class="has-text-danger">Las contraseñas deben ser iguales</p>
+        </ion-item>
+        <p *ngIf="invalidForm" class="has-text-danger">Verifique que los datos ingresados sean correctos</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col offset="1" size="10">
+        <ion-button [disabled]="isSubmitted" type="submit" color="primary" expand="block" (click)="register()">Registrarse</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
