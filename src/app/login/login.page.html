@@ -5,36 +5,45 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="loginForm">
-    <ion-row>
-      <ion-col offset="1" size="10">
-        <ion-item lines="none">
-          <ion-input color="primary" class="login__custom-input" type="email" formControlName="email" required placeholder="Email"></ion-input>
-          <p *ngIf="email.invalid && email.touched" class="has-text-danger">Ingrese un email valido</p>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+  <div class="login">
+    <div>
+      <form [formGroup]="loginForm">
+        <ion-row>
+          <ion-col offset="1" size="10">
+            <ion-item lines="none">
+              <ion-input color="primary" class="login__custom-input" type="email" formControlName="email" required placeholder="Email"></ion-input>
+              <p *ngIf="email.invalid && email.touched" class="has-text-danger">Ingrese un email valido</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
 
-    <ion-row>
-      <ion-col offset="1" size="10">
-        <ion-item lines="none">
-          <ion-input color="primary" class="login__custom-input" type="password" formControlName="password" required placeholder="Contraseña"></ion-input>
-          <p *ngIf="password.invalid && password.touched" class="has-text-danger">Ingrese un password valido</p>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+        <ion-row>
+          <ion-col offset="1" size="10">
+            <ion-item lines="none">
+              <ion-input color="primary" class="login__custom-input" type="password" formControlName="password" required placeholder="Contraseña"></ion-input>
+              <p *ngIf="password.invalid && password.touched" class="has-text-danger">Ingrese un password valido</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
 
-    <ion-row>
-      <ion-col offset="1" size="10">
-        <p *ngIf="invalidLogin" class="has-text-danger">El usuario o contraseña ingresado es incorrecto.</p>
-      </ion-col>
-    </ion-row>
+        <ion-row>
+          <ion-col offset="1" size="10">
+            <p *ngIf="invalidLogin" class="has-text-danger">El usuario o contraseña ingresado es incorrecto.</p>
+          </ion-col>
+        </ion-row>
 
-    <ion-row>
-      <ion-col offset="1" size="10">
-        <ion-button [disabled]="isSubmitted" type="submit" color="primary" expand="block" (click)="login()">Ingresar</ion-button>
-        <a [routerLink]="['/forgot-password']" class="small-text login__forgot-password">Olvido su contraseña?</a>
-      </ion-col>
-    </ion-row>
-  </form>
-</ion-content>
+        <ion-row>
+          <ion-col offset="1" size="10">
+            <ion-button [disabled]="isSubmitted" type="submit" color="primary" expand="block" (click)="login()">Ingresar</ion-button>
+            <a [routerLink]="['/forgot-password']" class="small-text login__forgot-password">Olvido su contraseña?</a>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+    <div class="login__forgot-password">
+      <a [routerLink]="['/register']" class="small-text">Registrarse</a>
+    </div>
+
+
+  </div>
+  </ion-content>
