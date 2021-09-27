@@ -1,6 +1,7 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/interface/user';
-
+import { checkUser, getUser } from 'src/app/utils/checkUser';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,10 @@ export class AuthServiceService {
 
   username = 'tony@hotmail.com';
   password = '1234';
+
+  dataBase: User[] = [
+    {email: 'tony@hotmail.com', password: '1234'}
+  ];
 
   constructor() { }
 
@@ -22,4 +27,15 @@ export class AuthServiceService {
         }
       }, 3000);
     });
+
+  register = async (newUser: User) => new Promise((resolve) => {
+    setTimeout(()=> {
+      if(!checkUser(this.dataBase, newUser)) {
+        this.dataBase.push(newUser);
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    }, 3000);
+  });
 }
