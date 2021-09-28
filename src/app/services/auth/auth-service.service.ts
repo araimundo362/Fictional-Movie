@@ -8,9 +8,6 @@ import { checkUser, getUser } from 'src/app/utils/checkUser';
 })
 export class AuthServiceService {
 
-  username = 'tony@hotmail.com';
-  password = '1234';
-
   dataBase: User[] = [
     {email: 'tony@hotmail.com', password: '1234'}
   ];
@@ -20,7 +17,8 @@ export class AuthServiceService {
 
   login = async (user: User) => new Promise((resolve) => {
       setTimeout(()=> {
-        if( user.email === this.username && user.password === this.password) {
+        const us = getUser(this.dataBase, user);
+        if(us && us.email === user.email && us.password === user.password) {
           resolve(true);
         } else {
           resolve(false);
