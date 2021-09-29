@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 import { Injectable } from '@angular/core';
 import { Movie } from 'src/app/interface/movie';
+import { Response } from 'src/app/interface/response';
+import { checkMovie } from 'src/app/utils/checkMovie';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,25 @@ export class MoviesService {
   constructor() { }
 
   getMovies = () => this.moviesDataBase;
+
+  addMovie = async (movie: Movie) => new Promise<Response>((resolve) => {
+    let response: Response;
+    setTimeout(() => {
+      if (!checkMovie(this.moviesDataBase, movie)) {
+        this.moviesDataBase.push(movie);
+        response = {
+          ok: true
+        };
+        resolve(response);
+      } else {
+        response = {
+          ok: false,
+          motive: 'MOVIE_EXIST'
+        };
+        resolve(response);
+      }
+    }, 2000);
+  });
 
   rateMovie = (movieName: string, rate: number) => {
     this.moviesDataBase.find((flm) => flm.name === movieName).rate = rate;
