@@ -1,0 +1,35 @@
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-rating',
+  templateUrl: './rating.component.html',
+  styleUrls: ['./rating.component.scss'],
+})
+export class RatingComponent implements OnInit {
+  @Input() rating: number;
+  @Input() customRate: number;
+
+  @Output() ratingChange: EventEmitter<number> = new EventEmitter();
+
+  constructor() { }
+
+  ngOnInit() {
+    this.rating = this.customRate;
+  }
+
+  rate = (index: number) => {
+    this.rating = index;
+    this.ratingChange.emit(this.rating);
+ };
+
+ getColor = (index: number) => {
+   if (this.isAboveRating(index)) {
+     return 'darkgray';
+   } else {
+     return 'yellow';
+   }
+};
+
+ isAboveRating = (index: number) => index > this.rating;
+
+}
