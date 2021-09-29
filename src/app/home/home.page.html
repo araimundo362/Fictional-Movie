@@ -7,14 +7,28 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div *ngIf="loading" class="home__spinnerContainer">
+    <ion-spinner name="crescent"></ion-spinner>
   </div>
+
+  <div class="home__moviesList" *ngIf="!loading">
+    <ion-item *ngFor="let film of movies, index as i" lines="none" class="home__moviesList__item" detail>
+      <ion-thumbnail class="home__moviesList__thumbnails">
+        <img src="{{film.image}}" />
+      </ion-thumbnail>
+      <div class="home__moviesList__item__data">
+        <div>
+          <h6>{{ film.name }}</h6>
+          <p> {{ film.description }}</p>
+        </div>
+        <app-rating [(customRate)]="film.rate" (ratingChange)="setNewRate($event, film.name)"></app-rating>
+      </div>
+    </ion-item>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
