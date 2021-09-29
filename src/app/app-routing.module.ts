@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'add-movie',
+    loadChildren: () => import('./add-movie/add-movie.module').then( m => m.AddMoviePageModule)
+  },
 
 ];
 
