@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" [routerLink]="['/home']">Atras</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="title">Agregar Peli! </h1>
+  <form [formGroup]="moviesForm">
+    <ion-row>
+      <ion-col offset="1" size="10">
+        <ion-item lines="none">
+          <ion-input color="primary" type="text" formControlName="name" required placeholder="Nombre de la pelicula"></ion-input>
+          <p *ngIf="name.invalid && name.touched" class="has-text-danger">Ingrese un nombre valido</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col offset="1" size="10">
+        <ion-item lines="none">
+          <ion-input color="primary" type="text" formControlName="description" required placeholder="Sinapsis"></ion-input>
+          <p *ngIf="description.invalid && description.touched" class="has-text-danger">Debe ingresar una sinapsis de la pelicula</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col offset="1" size="10">
+        <ion-item lines="none">
+          <ion-input type="text" color="primary" formControlName="image" required placeholder="Cargue una imagen"></ion-input>
+          <p *ngIf="image.invalid && image.touched" class="has-text-danger">Debe ingresar una url de imagen</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col offset="1" size="10">
+        <p *ngIf="invalidMovie" class="has-text-danger"> La pelicula que desea ingresar ya existe. Por favor, ingrese otra</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col offset="1" size="10">
+        <ion-button [disabled]="isSubmitted" type="submit" color="primary" expand="block" (click)="addMovie()">Agregar</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
