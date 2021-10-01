@@ -12,7 +12,7 @@
   </div>
 
   <div class="home__moviesList" *ngIf="!loading">
-    <ion-item *ngFor="let film of movies, index as i" lines="none" class="home__moviesList__item" detail>
+    <ion-item *ngFor="let film of movies, index as i" lines="none" class="home__moviesList__item" detail (click)="goToEditMovie(i)">
       <ion-thumbnail class="home__moviesList__thumbnails">
         <img src="{{film.image}}" />
       </ion-thumbnail>

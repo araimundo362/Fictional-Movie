@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from '../interface/movie';
 import { MoviesService } from '../services/Movies/movies.service';
 
@@ -12,7 +13,8 @@ export class HomePage implements OnInit {
   loading = false;
   movies: Movie[];
 
-  constructor(private moviesService: MoviesService) {}
+  constructor(private moviesService: MoviesService,
+              private router: Router) {}
 
 
   ngOnInit() {
@@ -25,5 +27,9 @@ export class HomePage implements OnInit {
 
   setNewRate = (ev: any, mov: string) => {
     this.moviesService.rateMovie(mov,ev);
+  };
+
+  goToEditMovie = (index: number) => {
+    this.router.navigate(['/edit-movie', {film: this.movies[index].name }]);
   };
 }
