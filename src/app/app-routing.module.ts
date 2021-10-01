@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'add-movie',
     loadChildren: () => import('./add-movie/add-movie.module').then( m => m.AddMoviePageModule)
   },
+  {
+    path: 'edit-movie',
+    loadChildren: () => import('./edit-movie/edit-movie.module').then( m => m.EditMoviePageModule)
+  },
 
 ];
 
