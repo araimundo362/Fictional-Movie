@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { User } from '../interface/user';
-import { AuthServiceService } from '../services/auth/auth-service.service';
-import { mustMatch } from '../validators/matching';
+import { User } from '../../interface/user';
+import { AuthServiceService } from '../../services/auth/auth-service.service';
+import { mustMatch } from '../../validators/matching';
 
 @Component({
   selector: 'app-register',

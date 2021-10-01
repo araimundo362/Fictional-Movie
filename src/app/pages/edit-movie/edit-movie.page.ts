@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Movie } from '../interface/movie';
-import { MoviesService } from '../services/Movies/movies.service';
+import { Movie } from '../../interface/movie';
+import { MoviesService } from '../../services/Movies/movies.service';
 
 @Component({
   selector: 'app-edit-movie',

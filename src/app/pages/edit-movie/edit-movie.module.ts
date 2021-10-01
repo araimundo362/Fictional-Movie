@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { EditMoviePageRoutingModule } from './edit-movie-routing.module';
 
 import { EditMoviePage } from './edit-movie.page';
-import { RatingComponent } from '../components/rating/rating.component';
+import { RatingComponent } from '../../components/rating/rating.component';
 
 @NgModule({
   imports: [
