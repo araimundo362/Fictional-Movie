@@ -23,6 +23,8 @@ export class MoviesService {
 
   getMovies = () => this.moviesDataBase;
 
+  getAMovie = (data: number | string ) => typeof data === 'number' ? this.moviesDataBase[data] : this.moviesDataBase.find( (fm) => fm.name === data);
+
   addMovie = async (movie: Movie) => new Promise<Response>((resolve) => {
     let response: Response;
     setTimeout(() => {
@@ -44,5 +46,12 @@ export class MoviesService {
 
   rateMovie = (movieName: string, rate: number) => {
     this.moviesDataBase.find((flm) => flm.name === movieName).rate = rate;
+  };
+
+  edit = (movie: Movie) => {
+    const film = this.moviesDataBase.find((mov) => mov.name === movie.name);
+    film.description = movie.description;
+    film.image = movie.image;
+    film.rate = movie.rate;
   };
 }
