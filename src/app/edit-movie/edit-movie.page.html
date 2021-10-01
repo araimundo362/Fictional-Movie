@@ -1,0 +1,39 @@
+<ion-header class="edit-toolbar">
+  <ion-toolbar color="dark">
+    <ion-buttons>
+      <ion-back-button defaultHref="/home" class="edit-page__backButton"></ion-back-button>
+      <ion-title>Atras</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+  <div *ngIf="loading" class="spinnerContainer">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  <div *ngIf="!loading">
+    <ion-card>
+      <form [formGroup]="editionForm">
+        <img class="edit-page__card-image" src="{{ movie.image }}" />
+        <app-rating [(customRate)]="movie.rate" (ratingChange)="setNewRate($event, movie.name)"></app-rating>
+        <ion-card-header>
+          <ion-card-title>{{ movie.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-textarea *ngIf="editMode" rows="4" formControlName="description" type="text"></ion-textarea>
+          <p class="edit-page__text" *ngIf="!editMode">{{ movie.description}}</p>
+        </ion-card-content>
+      </form>
+    </ion-card>
+    <div class="edit-page__toggle">
+      <p>Modo edicion</p>
+      <ion-toggle (ionChange)="setEditMode(!editMode)" color="primary"></ion-toggle>
+    </div>
+    <div *ngIf="isPristine" class="isPristineMessage">
+      <p class="has-text-danger">El formulario no ha sufrido cambios</p>
+    </div>
+    <div class="edit-page__buttonContainer" *ngIf="editMode">
+      <ion-button [disabled]="editing" (click)="edit()">Editar</ion-button>
+    </div>
+  </div>
+</ion-content>
